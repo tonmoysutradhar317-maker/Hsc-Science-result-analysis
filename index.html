@@ -3,124 +3,435 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>HSC Science Result Analyzer</title>
-  <meta name="description" content="HSC Science Group GPA and Result Analyzer">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">HSC</div>
-      <div>
-        <h1>Science Result Analyzer</h1>
-        <p>HSC Science Group • GPA 5.00 Calculator</p>
-      </div>
+
+<header class="topbar">
+
+  <div class="brand">
+    <div class="logo">HSC</div>
+
+    <div>
+      <h1>Science Result Analyzer</h1>
+      <p>HSC Science Group • GPA 5.00 Calculator</p>
     </div>
-    <button id="resetBtn" class="ghost-btn">↻ Reset</button>
-  </header>
+  </div>
 
-  <main class="container">
-    <section class="hero">
+  <button id="resetBtn" class="reset-btn">
+    ↻ Reset
+  </button>
+
+</header>
+
+
+<main class="container">
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">HSC • SCIENCE</span>
+
+      <h2>
+        তোমার রেজাল্ট কত হতে পারে?
+      </h2>
+
+      <p>
+        প্রতিটি পত্রের নম্বর আলাদাভাবে ইনপুট দাও।
+        ১ম ও ২য় পত্র মিলিয়ে বিষয়ভিত্তিক GPA এবং
+        Optional Subject Bonus হিসাব হবে।
+      </p>
+
+    </div>
+
+
+    <div class="hero-score">
+
+      <span>Estimated GPA</span>
+
+      <strong id="heroGpa">
+        0.00
+      </strong>
+
+      <small id="heroStatus">
+        নম্বর ইনপুট করুন
+      </small>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- OPTIONAL SUBJECT -->
+
+  <section class="card">
+
+    <div class="section-title">
+
       <div>
-        <span class="eyebrow">HSC • SCIENCE</span>
-        <h2>তোমার রেজাল্ট কত হতে পারে?</h2>
-        <p>MCQ, CQ, Written ও Practical নম্বর ইনপুট দাও। সিস্টেম স্বয়ংক্রিয়ভাবে বিষয়ভিত্তিক GPA, Optional Subject Bonus এবং Final GPA হিসাব করবে।</p>
-      </div>
-      <div class="hero-score">
-        <span>Estimated GPA</span>
-        <strong id="heroGpa">0.00</strong>
-        <small id="heroStatus">নম্বর ইনপুট করুন</small>
-      </div>
-    </section>
 
-    <section class="card intro-card">
-      <div class="section-title">
+        <h3>
+          ১. Optional / 4th Subject নির্বাচন
+        </h3>
+
+        <p>
+          Higher Math অথবা Biology থেকে যেকোনো একটি ৪র্থ বিষয় নির্বাচন করো।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="optional-grid">
+
+      <label class="option-card active">
+
+        <input
+          type="radio"
+          name="optional"
+          value="higher_math"
+          checked
+        >
+
+        <span class="radio-dot"></span>
+
         <div>
-          <h3>১. Optional / 4th Subject নির্বাচন</h3>
-          <p>Higher Math অথবা Biology — যেকোনো একটিকে ৪র্থ বিষয় হিসেবে নির্বাচন করো।</p>
-        </div>
-      </div>
-      <div class="optional-grid">
-        <label class="option-card active">
-          <input type="radio" name="optional" value="higher_math" checked>
-          <span class="radio-dot"></span>
-          <div><b>Higher Math</b><small>Optional / 4th Subject</small></div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="optional" value="biology">
-          <span class="radio-dot"></span>
-          <div><b>Biology</b><small>Optional / 4th Subject</small></div>
-        </label>
-      </div>
-    </section>
 
-    <section class="card">
-      <div class="section-title">
+          <b>Higher Math</b>
+
+          <small>
+            Optional / 4th Subject
+          </small>
+
+        </div>
+
+      </label>
+
+
+      <label class="option-card">
+
+        <input
+          type="radio"
+          name="optional"
+          value="biology"
+        >
+
+        <span class="radio-dot"></span>
+
         <div>
-          <h3>২. নম্বর ইনপুট</h3>
-          <p>প্রতিটি অংশের প্রাপ্ত নম্বর লিখুন।</p>
+
+          <b>Biology</b>
+
+          <small>
+            Optional / 4th Subject
+          </small>
+
         </div>
-        <span class="save-badge">Auto Calculate</span>
+
+      </label>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- MARK INPUT -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h3>
+          ২. নম্বর ইনপুট
+        </h3>
+
+        <p>
+          প্রতিটি পত্রের নম্বর আলাদাভাবে লিখুন।
+        </p>
+
       </div>
 
-      <div id="subjects"></div>
-    </section>
+      <span class="save-badge">
+        Auto Calculate
+      </span>
 
-    <section class="dashboard-grid">
-      <div class="card">
-        <div class="section-title">
-          <div><h3>Subject-wise Analysis</h3><p>প্রতিটি বিষয়ের মোট নম্বর ও GPA</p></div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Subject</th><th>Marks</th><th>Grade</th><th>GPA</th><th>Status</th></tr>
-            </thead>
-            <tbody id="analysisTable"></tbody>
-          </table>
-        </div>
-      </div>
+    </div>
 
-      <div class="card result-card">
-        <div class="section-title">
-          <div><h3>Final Result</h3><p>Optional bonus সহ</p></div>
-        </div>
-        <div class="final-gpa">
-          <span>GPA</span>
-          <strong id="finalGpa">0.00</strong>
-          <b id="finalGrade">—</b>
-        </div>
-        <div class="result-stats">
-          <div><span>Main Subject GPA Sum</span><b id="mainSum">0.00</b></div>
-          <div><span>Optional GPA</span><b id="optionalGpa">0.00</b></div>
-          <div><span>Optional Bonus</span><b id="bonus">0.00</b></div>
-          <div><span>Subjects Passed</span><b id="passedCount">0 / 6</b></div>
-        </div>
-        <div id="warning" class="warning hidden"></div>
-      </div>
-    </section>
 
-    <section class="card grading-card">
+    <div id="subjects"></div>
+
+  </section>
+
+
+
+  <!-- RESULT -->
+
+  <section class="dashboard-grid">
+
+
+    <!-- SUBJECT ANALYSIS -->
+
+    <div class="card">
+
       <div class="section-title">
-        <div><h3>GPA Grading Scale</h3><p>এই analyzer-এ ব্যবহৃত স্কেল</p></div>
-      </div>
-      <div class="grade-grid">
-        <div><b>80–100</b><span>A+ • 5.00</span></div>
-        <div><b>70–79</b><span>A • 4.00</span></div>
-        <div><b>60–69</b><span>A− • 3.50</span></div>
-        <div><b>50–59</b><span>B • 3.00</span></div>
-        <div><b>40–49</b><span>C • 2.00</span></div>
-        <div><b>33–39</b><span>D • 1.00</span></div>
-        <div><b>0–32</b><span>F • 0.00</span></div>
-      </div>
-      <p class="note">নোট: এটি তোমার দেওয়া HSC Science Group কাঠামো অনুযায়ী একটি analyzer। বোর্ড/সিলেবাসে কোনো পরিবর্তন থাকলে grading rules আলাদাভাবে আপডেট করতে হবে।</p>
-    </section>
-  </main>
 
-  <footer>HSC Science Result Analyzer • Built for practice & estimation</footer>
-  <script src="script.js"></script>
+        <div>
+
+          <h3>
+            Subject-wise Analysis
+          </h3>
+
+          <p>
+            প্রতিটি বিষয়ের মোট নম্বর ও GPA
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Subject</th>
+
+              <th>Marks</th>
+
+              <th>Grade</th>
+
+              <th>GPA</th>
+
+              <th>Status</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="analysisTable"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FINAL RESULT -->
+
+    <div class="card result-card">
+
+      <div class="section-title">
+
+        <div>
+
+          <h3>
+            Final Result
+          </h3>
+
+          <p>
+            Optional Bonus সহ
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="final-gpa">
+
+        <span>
+          GPA
+        </span>
+
+        <strong id="finalGpa">
+          0.00
+        </strong>
+
+        <b id="finalGrade">
+          —
+        </b>
+
+      </div>
+
+
+      <div class="result-stats">
+
+        <div>
+
+          <span>
+            Main Subject GPA Sum
+          </span>
+
+          <b id="mainSum">
+            0.00
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Optional GPA
+          </span>
+
+          <b id="optionalGpa">
+            0.00
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Optional Bonus
+          </span>
+
+          <b id="bonus">
+            0.00
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Subjects Passed
+          </span>
+
+          <b id="passedCount">
+            0 / 6
+          </b>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="warning"
+        class="warning hidden"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- GRADING -->
+
+  <section class="card grading-card">
+
+    <div class="section-title">
+
+      <div>
+
+        <h3>
+          GPA Grading Scale
+        </h3>
+
+        <p>
+          এই Analyzer-এ ব্যবহৃত grading scale
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="grade-grid">
+
+      <div>
+        <b>80–100</b>
+        <span>A+ • 5.00</span>
+      </div>
+
+      <div>
+        <b>70–79</b>
+        <span>A • 4.00</span>
+      </div>
+
+      <div>
+        <b>60–69</b>
+        <span>A− • 3.50</span>
+      </div>
+
+      <div>
+        <b>50–59</b>
+        <span>B • 3.00</span>
+      </div>
+
+      <div>
+        <b>40–49</b>
+        <span>C • 2.00</span>
+      </div>
+
+      <div>
+        <b>33–39</b>
+        <span>D • 1.00</span>
+      </div>
+
+      <div>
+        <b>0–32</b>
+        <span>F • 0.00</span>
+      </div>
+
+    </div>
+
+
+    <p class="note">
+
+      প্রতিটি Science subject-এর ১ম ও ২য় পত্র
+      ১০০ নম্বর করে। অর্থাৎ Physics, Chemistry,
+      Higher Math এবং Biology প্রতিটি বিষয়ের মোট
+      নম্বর ২০০।
+
+      প্রতিটি পত্রে:
+      ২৫ MCQ + ৫০ CQ + ২৫ Practical = ১০০।
+
+    </p>
+
+  </section>
+
+</main>
+
+
+
+<footer>
+
+  HSC Science Result Analyzer
+
+  <br>
+
+  Designed & Developed by
+  <strong>Tonmoy Sutradhar</strong>
+
+</footer>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
